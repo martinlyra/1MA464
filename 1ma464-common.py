@@ -19,6 +19,15 @@ def ntt(numbers):
     return str.join("", t)
 
 
+# Returns list of positions for given value in a list
+def position(l, v):
+    r = []
+    for i in range(0, len(l)):
+        if l[i] == v:
+            r.append(i)
+    return r
+
+
 # Hill Cipher Encryption or Decryption
 def hill(text, matrix):
     blocksize = len(matrix)
@@ -27,8 +36,8 @@ def hill(text, matrix):
         vec = text[x: x + blocksize]
         res = np.dot(vec, matrix) % 26
 
-        for c in res.tolist()[0]:
-            output.append(c)
+        for c in res:
+            output.append(int(c.item()))
     return output
 
 
